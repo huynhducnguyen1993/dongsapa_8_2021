@@ -1,0 +1,453 @@
+{%extends 'base.html' %}
+  <!-- Content Wrapper. Contains page content -->
+{% block content1%}
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0"></h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{% url 'index' %}">Trang Chủ</a></li>
+              <li class="breadcrumb-item active">index</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+
+        {% if cv.sep == True %}
+        <div class="card">
+          <div class="card-header" style="background-color: rgb(122, 120, 121);">
+            <h1 class="card-title" style="background-color:  rgb(120, 122, 120); color: floralwhite;"> <trong>Quản Lý Đề Xuất</trong></h1>
+            <div class="card-tools">
+             
+              <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+            </div>
+          
+          </div>
+         
+          <div class="card-body">  
+            
+              <div class="row">
+                          
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>{% if duyet_tp.demsep %} {{duyet_tp.demsep}} {%else%} 0 {%endif%} </h3>
+      
+                            <p>Đễ Xuất Chờ Sếp Duyệt</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-edit"></i>
+                        </div>
+                        <a href="{% url 'quan-ly-de-xuat-sep'%}" class="small-box-footer"> Xem <i
+                                class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>{% if duyet_tp.demht %} {{duyet_tp.demht}} {%else%} 0 {%endif%} </h3>
+      
+                            <p>Đề Xuất Đã Duyệt</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-checkmark-circled"></i>
+                        </div>
+                        <a href="{% url 'quan-ly-de-xuat-da-duyet'%}" class="small-box-footer">Xem 
+                            <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-sercondary">
+                        <div class="inner">
+                            <h3>{% if duyet_tp.demtu %} {{duyet_tp.demtu}} {%else%} 0 {%endif%} </h3>
+      
+                            <p>Đề Xuất Đã Tạm Ứng</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-arrow-swap"></i>
+                        </div>
+                        <a href="{% url 'quan-ly-de-xuat-da-tam-ung'%}" class="small-box-footer">Xem <i
+                                class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>{% if duyet_tp.demhuy %} {{duyet_tp.demhuy}} {%else%} 0 {%endif%} </h3>
+      
+                            <p>Đề Xuất Bị Từ Chối</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-close-circled"></i>
+                        </div>
+                        <a href="{% url 'quan-ly-de-xuat-da-huy'%}" class="small-box-footer">Xem<i
+                                class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+            </div>
+          </div>
+        
+        {% endif %}
+
+     
+
+        {% if cv.tp == True %}
+        <div class="card">
+          <div class="card-header" style="background-color: rgb(120, 122, 120);">
+            <h1 class="card-title" style="background-color:  rgb(120, 122, 120); color: floralwhite;"> <trong>Quản Lý Đề Xuất</trong></h1>
+            <div class="card-tools">
+             
+              <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+            </div>
+          
+          </div>
+         
+          <div class="card-body">  
+            <div class="row">
+              <div class="col-lg-3 col-6">
+                  <!-- small box -->
+                  <div class="small-box bg-dark">
+                      <div class="inner">
+                          <h3> {% if duyet_tp.demtp %} {{duyet_tp.demtp}} {%else%} 0 {%endif%} </h3>
+
+                          <p>Đễ Xuất Chờ TP Duyệt</p>
+                      </div>
+                      <div class="icon">
+                          <i class="ion ion-edit"></i>
+                      </div>
+                      <a href="{% url 'quan-ly-de-xuat'%}" class="small-box-footer"> Xem <i
+                              class="fas fa-arrow-circle-right"></i></a>
+                  </div>
+              </div>
+              
+              <!-- ./col -->
+              <div class="col-lg-3 col-6">
+                  <!-- small box -->
+                  <div class="small-box bg-success">
+                      <div class="inner">
+                          <h3>
+                            {% if cv.tp == True %} {{duyet_tp.demht_tp}} {%else%} 0 {%endif%}
+                           </h3>
+
+                          <p>Đề Xuất Đã Duyệt</p>
+                      </div>
+                      <div class="icon">
+                          <i class="ion ion-loop"></i>
+                      </div>
+                      <a href="{% url 'quan-ly-de-xuat-da-duyet'%}" class="small-box-footer">Xem <i
+                              class="fas fa-arrow-circle-right"></i></a>
+                  </div>
+              </div>
+              <!-- ./col -->
+              <div class="col-lg-2 col-6">
+                  <!-- small box -->
+                  <div class="small-box bg-sercondary">
+                      <div class="inner">
+                          <h3>{{duyet_tp.demht_tp}} </h3>
+
+                          <p>Đề Xuất Đã Tạm Ứng</p>
+                      </div>
+                      <div class="icon">
+                          <i class="ion ion-arrow-swap"></i>
+                      </div>
+                      <a href="{% url 'quan-ly-de-xuat-da-tam-ung'%}" class="small-box-footer">Xem <i
+                              class="fas fa-arrow-circle-right"></i></a>
+                  </div>
+              </div>
+              <div class="col-lg-2 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>0</h3>
+
+                        <p><strong>Đề Xuất Đã Giải Chi</strong></p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-social-euro"></i>
+                    </div>
+                    <a href="{% url 'quan-ly-de-xuat-da-huy'%}" class="small-box-footer">Xem<i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+              <!-- ./col -->
+              <div class="col-lg-2 col-6">
+                  <!-- small box -->
+                  <div class="small-box bg-danger">
+                      <div class="inner">
+                          <h3>{% if duyet_tp.demhuy_tp %} {{duyet_tp.demhuy_tp}} {%else%} 0 {%endif%}</h3>
+
+                          <p>Đề Xuất Bị Từ Chối</p>
+                      </div>
+                      <div class="icon">
+                          <i class="ion ion-checkmark"></i>
+                      </div>
+                      <a href="{% url 'quan-ly-de-xuat-da-huy'%}" class="small-box-footer">Xem<i
+                              class="fas fa-arrow-circle-right"></i></a>
+                  </div>
+              </div>
+
+              <!-- ./col -->
+          </div>
+
+          <!-- ./col -->
+      </div>
+      </div>
+        {%endif%}
+      </div>
+    </section>
+    <!-- /.content -->
+
+    <!-- <section class="content">
+      <div class="container-fluid">
+      <div class="row">
+        <div class="col col-3">
+          <div class="card">
+            <div class="card-header" style="background-color: darkorchid;">
+              <h3 class="card-title" style="background-color: darkorchid; color: floralwhite;"> <span style="font-size: 17px;"class="badge badge-info right"> 10 </span><trong> Giải Chi Chờ TP Duyệt</trong></h3>
+              <div class="card-tools">
+               
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+              </div>
+            
+            </div>
+           
+            <div class="card-body">
+              <ul>
+                <li> <h4> Hàng Hóa <span style = "font-size: 13px;" class="badge badge-info right"> 4 </span> </h4></li>
+                <li> <h4> Thiết Bị <span style = "font-size: 13px;" class="badge badge-info right"> 4 </span> </h4></li>
+                <li> <h4> Khác <span style = "font-size: 13px;" class="badge badge-info right"> 4 </span> </h4></li>
+              
+              </ul> 
+            </div>
+           
+          </div>
+          
+        </div>
+        <div class="col col-3">
+          
+        </div>
+        <div class="col col-3">
+          
+        </div>
+        <div class="col col-3">
+          
+        </div>
+
+      </div>
+      </div>
+    </section> -->
+    <section class="content">
+      <div class="container-fluid">
+
+        {% if cv.sep == True %}
+        <div class="card">
+          <div class="card-header" style="background-color: rgb(69, 163, 69);">
+            <h1 class="card-title" style="background-color:  rgb(86, 173, 86); color: floralwhite;"> <trong>Quản Lý Giải Chi</trong></h1>
+            <div class="card-tools">
+             
+              <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+            </div>
+          
+          </div>
+         
+          <div class="card-body">  
+        
+            
+            <div class="row">
+             
+              <div class="col-lg-3 col-6">
+                  <!-- small box -->
+                  <div class="small-box bg-orange">
+                      <div class="inner">
+                          <h3>{{gc_nv.gccdsep}} </h3>
+
+                          <p>Giải Chi Chờ Sếp Duyệt</p>
+                      </div>
+                      <div class="icon">
+                          <i class="ion ion-edit"></i>
+                      </div>
+                      <a href="{% url 'quan-ly-giai-chi-sep'%}" class="small-box-footer"> Xem <i
+                              class="fas fa-arrow-circle-right"></i></a>
+                  </div>
+              </div>
+              <!-- ./col -->
+              <div class="col-lg-3 col-6">
+                  <!-- small box -->
+                  <div class="small-box bg-success">
+                      <div class="inner">
+                          <h3>{{gc_nv.gcddsep}}</h3>
+
+                          <p>Giải Chi Đã Duyệt</p>
+                      </div>
+                      <div class="icon">
+                          <i class="ion ion-loop"></i>
+                      </div>
+                      <a href="{% url 'quan-ly-giaichi-da-duyet'%}" class="small-box-footer">Xem <i
+                              class="fas fa-arrow-circle-right"></i></a>
+                  </div>
+              </div>
+              <!-- ./col -->
+              <div class="col-lg-3 col-6">
+                  <!-- small box -->
+                  <div class="small-box bg-info">
+                      <div class="inner">
+                          <h3>10</h3>
+
+                          <p><strong> Giải Chi Hoàn Tất</strong></p>
+                      </div>
+                      <div class="icon">
+                          <i class="ion ion-social-euro"></i>
+                      </div>
+                      <a href="{% url 'quan-ly-de-xuat-da-huy'%}" class="small-box-footer">Xem<i
+                              class="fas fa-arrow-circle-right"></i></a>
+                  </div>
+              </div>
+              <!-- ./col -->
+              <div class="col-lg-3 col-6">
+                  <!-- small box -->
+                  <div class="small-box bg-danger">
+                      <div class="inner">
+                          <h3>{{gc_nv.gchuysep}}</h3>
+
+                          <p>Giải Chi Từ Chối</p>
+                      </div>
+                      <div class="icon">
+                          <i class="ion ion-ios-close"></i>
+                      </div>
+                      <a href="{% url 'quan-ly-giaichi-da-huy'%}" class="small-box-footer">Xem<i
+                              class="fas fa-arrow-circle-right"></i></a>
+                  </div>
+              </div>
+              <!-- ./col -->
+          </div>
+           
+        </div>
+        {% endif %}
+
+     
+
+        {% if cv.tp == True %}
+        <h2 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"></h2> 
+        <div class="card">
+          <div class="card-header" style="background-color: rgb(142, 17, 245);">
+            <h1 class="card-title" style="background-color:  rgb(142, 17, 245); color: floralwhite;"> <trong>Quản Lý Giải Chi</trong></h1>
+            <div class="card-tools">
+             
+              <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+            </div>
+          
+          </div>
+         
+          <div class="card-body">  
+        <div class="row">
+                                <div class="col-lg-3 col-6">
+                                    <!-- small box -->
+                                    <div class="small-box bg-purple">
+                                        <div class="inner">
+                                            <h3>{{gc_nv.gccdtp}} </h3>
+
+                                            <p>Giải Chi Chờ TP Duyệt</p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="ion ion-edit"></i>
+                                        </div>
+                                        <a href="{% url 'quan-ly-giai-chi-tp'%}" class="small-box-footer"> Xem <i
+                                                class="fas fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-6">
+                                    <!-- small box -->
+                                    <div class="small-box bg-orange">
+                                        <div class="inner">
+                                            <h3>{{gc_nv.gccdsep_pb}} </h3>
+
+                                            <p>Giải Chi Chờ Sếp Duyệt</p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="ion ion-edit"></i>
+                                        </div>
+                                        <a href="{% url 'quan-ly-giai-chi-sep'%}" class="small-box-footer"> Xem <i
+                                                class="fas fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </div>
+                                <!-- ./col -->
+                                <div class="col-lg-2 col-6">
+                                    <!-- small box -->
+                                    <div class="small-box bg-success">
+                                        <div class="inner">
+                                            <h3>{{gc_nv.gcddtp}}</h3>
+
+                                            <p>Giải Chi Đã Duyệt</p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="ion ion-loop"></i>
+                                        </div>
+                                        <a href="{% url 'quan-ly-giaichi-da-duyet'%}" class="small-box-footer">Xem <i
+                                                class="fas fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </div>
+                                <!-- ./col -->
+                                <div class="col-lg-2 col-6">
+                                    <!-- small box -->
+                                    <div class="small-box bg-info">
+                                        <div class="inner">
+                                            <h3>10</h3>
+
+                                            <p><strong> Giải Chi Hoàn Tất</strong></p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="ion ion-social-euro"></i>
+                                        </div>
+                                        <a href="{% url 'quan-ly-de-xuat-da-huy'%}" class="small-box-footer">Xem<i
+                                                class="fas fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </div>
+                                <!-- ./col -->
+                                <div class="col-lg-2 col-6">
+                                    <!-- small box -->
+                                    <div class="small-box bg-danger">
+                                        <div class="inner">
+                                            <h3>{{gc_nv.gctphuy}}</h3>
+
+                                            <p>Giải Chi Từ Chối</p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="ion ion-ios-close"></i>
+                                        </div>
+                                        <a href="{% url 'quan-ly-giaichi-da-huy'%}" class="small-box-footer">Xem<i
+                                                class="fas fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </div>
+                                <!-- ./col -->
+                            </div>
+
+          <!-- ./col -->
+      </div>
+        {%endif%}
+      </div>
+      </div>
+    </section>  
+
+
+  </div>
+{% endblock%}
+  <!-- /.content-wrapper -->
